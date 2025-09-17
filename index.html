@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Academy Access</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* small override to center the form on this page */
+    body{display:flex;align-items:center;justify-content:center;height:100vh;background:#f6f9fc;font-family:Inter,Arial}
+    .entry-box{background:#fff;padding:28px;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.06);max-width:520px;width:100%;text-align:center}
+    input{width:80%;padding:10px;border-radius:8px;border:1px solid #e6eef6;margin-right:6px}
+    button{padding:10px 14px;border-radius:8px;background:#0f62fe;color:#fff;border:none;cursor:pointer;font-weight:600}
+    small{display:block;color:#7b8794;margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="entry-box">
+    <h2 style="margin:0 0 10px">Welcome</h2>
+    <p style="color:#556070;margin-bottom:16px">Type the academy name to continue</p>
+    <input id="keyword" placeholder="Type academy name (e.g. The Academy of Education)" />
+    <button onclick="check()">Enter</button>
+    <small>Hint: Type exactly <strong>The Academy of Education</strong></small>
+  </div>
+
+  <script>
+    function check(){
+      const val = document.getElementById('keyword').value.trim();
+      if(val.toLowerCase() === "the academy of education".toLowerCase()){
+        // Open the portal page
+        window.location.href = 'portal.html';
+      } else {
+        alert('Name not matched. Please type: The Academy of Education');
+      }
+    }
+
+    // allow Enter key
+    document.getElementById('keyword').addEventListener('keydown', function(e){
+      if(e.key === 'Enter') check();
+    });
+  </script>
+</body>
+</html>

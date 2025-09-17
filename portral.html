@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Academy of Education — Fee Portal</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+
+  <!-- html2canvas + jsPDF (for PDF export) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">
+        <img src="https://via.placeholder.com/56x56?text=Logo" alt="logo" class="logo"/>
+        <div>
+          <h1>The Academy of Education</h1>
+          <small>Smart Fee Management</small>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#generate">Generate Slip</a>
+        <a href="#records">Records</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h2>Professional Fee Slip Generator</h2>
+          <p>Generate, print, and download student fee slips instantly. Clean UI, mobile friendly, and ready for integration.</p>
+          <a class="btn" href="#generate">Generate Slip Now</a>
+        </div>
+        <div class="hero-art">
+          <img src="https://via.placeholder.com/540x340?text=Academy+Image" alt="academy"/>
+        </div>
+      </div>
+    </section>
+
+    <section id="generate" class="panel container">
+      <h3>Generate Fee Slip</h3>
+      <form id="slipForm" class="form-grid">
+        <div class="field">
+          <label>Student Name</label>
+          <input type="text" id="studentName" required />
+        </div>
+        <div class="field">
+          <label>Roll / ID</label>
+          <input type="text" id="studentRoll" />
+        </div>
+        <div class="field">
+          <label>Class / Section</label>
+          <input type="text" id="studentClass" />
+        </div>
+        <div class="field">
+          <label>Tuition (PKR)</label>
+          <input type="number" id="tuition" min="0" value="0" required />
+        </div>
+        <div class="field">
+          <label>Additional Charges (PKR)</label>
+          <input type="number" id="additional" min="0" value="0" />
+        </div>
+
+        <fieldset class="field facilities">
+          <legend>Facilities (select)</legend>
+          <label><input type="checkbox" value="Transport" class="facility" data-cost="5000"> Transport — 5000 PKR</label>
+          <label><input type="checkbox" value="Lunch" class="facility" data-cost="3000"> Lunch Program — 3000 PKR</label>
+          <label><input type="checkbox" value="Lab" class="facility" data-cost="2000"> Science Lab — 2000 PKR</label>
+          <label><input type="checkbox" value="Sports" class="facility" data-cost="1500"> Sports — 1500 PKR</label>
+        </fieldset>
+
+        <div class="field full">
+          <label>Notes</label>
+          <textarea id="notes" rows="2"></textarea>
+        </div>
+
+        <div class="actions full">
+          <button type="submit" class="btn primary">Generate Slip</button>
+          <button type="button" id="clearFormBtn" class="btn ghost">Clear</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="preview" class="container panel hidden">
+      <div class="preview-header">
+        <h3>Slip Preview</h3>
+        <div>
+          <button id="downloadPdf" class="btn">Download PDF</button>
+          <button id="printBtn" class="btn">Print</button>
+          <button id="saveRecord" class="btn ghost">Save Record</button>
+        </div>
+      </div>
+
+      <div id="slipCard" class="slip-card" >
+        <!-- Slip content inserted by JS -->
+      </div>
+    </section>
+
+    <section id="records" class="container panel">
+      <h3>Saved Records</h3>
+      <div id="recordsList" class="records-list">
+        <!-- Records show here -->
+      </div>
+      <div class="records-actions">
+        <button id="exportAllCsv" class="btn">Export All (CSV)</button>
+        <button id="clearAll" class="btn ghost">Clear All Records</button>
+      </div>
+    </section>
+
+    <section id="contact" class="container panel small">
+      <h3>Contact</h3>
+      <p>The Academy of Education — 123 School Road, City<br/>Phone: +92 300 0000000 — Email: info@academy.edu</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small>© <span id="year"></span> The Academy of Education — Built with ❤️</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
